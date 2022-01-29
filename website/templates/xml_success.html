@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head %} <title>Microanalisis</title> {% endblock %}
+
+{% block body %}
+
+    {% if success != True %}
+        
+        <div style="width:95%; margin:auto; border: 5px solid #3b8f42; padding:3%; margin-top:3%; border-radius: 25px">
+            <h3>Selecciona a cual Recibo pertenece el file .xml</h3>
+            <form action="{{ url_for('xml.xml_success') }}" method="POST">
+                <table class="table table-hover">
+                    <tr style="background-color: #3b8f42;">
+                        <th>Recibos</th>
+                        <th>XML</th>
+                        <th></th>
+                    </tr>
+                    {% if receipts|length > 0%}
+                        {% for receipt in receipts %}
+                            <tr>
+                                <td>
+                                    <p style="margin-top:3px; margin-bottom:3px">Usuario: {{ receipt.user.name }}</p>
+                                    <p style="margin-top:3px; margin-bottom:3px">Orden de Trabajo: {{receipt.project_id }}</p>
+                                    <p style="margin-top:3px; margin-bottom:3px">Ubicacion: {{ receipt.address }}</p>
+                                    <p style="margin-top:3px; margin-bottom:3px">RFC: {{ receipt.rfc }}</p>
+                                    <p style="margin-top:3px; margin-bottom:3px">Fecha: {{ receipt.time }}</p>
+                                    <p style="margin-top:3px; margin-bottom:3px">Total Neto: {{ receipt.total }}</p>
+                                    <p style="margin-top:3px; margin-bottom:3px">IVA: {{ receipt.iva }}</p>
+
+                                </td>
+                                <td><input onChange="this.form.submit()" type="checkbox" value="{{ receipt.receipt_id }}" name="receipt_id"></td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td>
+                            <p>
+                                No hay recibos sin comprobante.
+                            </p>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </table>
+            </form>
+        </div>
+
+
+
+
+
+    {% else %}
+    <p>sucedio un error</p>
+    <p>{{ success }}</p>
+        
+
+    {% endif %}
+
+{% endblock %}

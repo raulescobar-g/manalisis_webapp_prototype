@@ -1,0 +1,26 @@
+{% extends 'login_base.html' %}
+
+{% block head %} <title>Microanalisis</title> {% endblock %}
+
+
+{% block body %}
+    <div style="width:70%; margin:auto; border: 7px solid #3b8f42; padding:5%; margin-top:3%; border-radius: 25px">
+        <form action="#" method="POST">
+            <table class="table table-hover">
+                <tr style="background-color: #3b8f42;">
+                    <th>Nombres</th>
+                    <th></th>
+                </tr>
+                {% for name in names %}
+                    <tr>
+                        <td><p>{{ name }}</p></td>
+                        <td><input onChange="this.form.submit()" type="checkbox" value="{{name}}" name="name"></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <div class="col-12" style="margin-top:10px">
+                <button class="btn btn-primary" name="none" type="submit" value="none">Mi nombre no esta aqui</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

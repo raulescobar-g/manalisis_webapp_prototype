@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head %} <title>Microanalisis</title> {% endblock %}
+
+{% block body %}
+{% if projects|length == 0 %}
+    
+    <div class='mb-3' style="width:90%; margin:auto; border: 7px solid #3b8f42; padding:5%; margin-top:3%; border-radius: 25px">
+        <h4> No encontramos ordenes de trabajo con el usuario "{{ user.name }}" en nuestra base de datos. </h4>
+        <p>
+            Preguntale al administrador de tu sucursal bajo que nombre estas en la base 
+            de datos. Se puede encontrar en la tabla "beneficiarios" en "razon social".
+            En la pagina "Log-In" escoge "Se me olvido mi contrasena" para rehacer tu 
+            cuenta con el nombre correcto. 
+        </p>
+    </div>
+{% else %}
+    
+    <div class='mb-3' style="width:90%; margin:auto; border: 7px solid #3b8f42; padding:5%; margin-top:3%; border-radius: 25px">
+        
+        <table class="table" style="margin:auto;">
+            <tr style="color:#ffff;background-color: #3b8f42;font-size:8px">
+                <th>OT</th>    
+                <th>Presupuesto</th>
+                <th>Gastado</th>
+                <th>Comprobado</th>  
+                <th>Status</th>
+            </tr>
+        {%for project in projects%}
+                
+                <tr style="font-size:8px">
+                    <td><a href=" {{ url_for('tabulate.table', project_id=project.project_id) }}">{{ project.project_id }}</a></td>
+                    <td><a href="{{ url_for('proj_view.budget', project_id=project.project_id) }}">{{ project.budget }}</a></td>
+                    <td>{{ project.spent }}</td>
+                    <td>{{ project.proven }}</td> 
+                    {% if project.indicator.current != 'Completo' %}
+                        <td>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-x-circle text-danger" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </td>
+                    {% else %}
+                        <td>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-check-circle text-success" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                            </svg>
+                        </td>
+                    {% endif %}
+                </tr>
+            
+            {% endfor%}
+        </table>
+        
+    </div>      
+{% endif %}
+{% endblock %}

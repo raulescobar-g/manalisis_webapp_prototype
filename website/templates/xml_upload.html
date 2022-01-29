@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %} <title>Microanalisis</title> {% endblock %}
+
+{% block body %}
+
+<h4 style="text-align: center;margin:5% 5%">Solo sube file xml si el recibo esta en la base de datos</h4>
+
+        <div class="mb-3" style="margin:3% 5% 3%">
+            <form action="{{ url_for('xml.xml_upload') }}" method="POST" style="width:90%; border: 7px solid #3b8f42; padding:5%; margin:3% auto auto; border-radius: 25px" enctype="multipart/form-data">
+                <label class="form-label" for="inputGroupFile01">Forma XML:</label>
+                <input type="file" class="form-control" id="inputGroupFile01" name="xml_input" required>
+                <div class="col-12" style="margin-top:10px">
+                    <button class="btn btn-primary" type="submit">Subir</button>
+                </div>
+            </form>
+        </div>
+
+{% endblock %}

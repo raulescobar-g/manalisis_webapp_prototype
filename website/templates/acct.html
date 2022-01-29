@@ -1,0 +1,43 @@
+{% extends 'login_base.html' %}
+
+{% block head %} <title>Microanalisis</title> {% endblock %}
+
+
+{% block body %}
+
+<div class ="container" style="width:70%; margin:auto; border: 7px solid #3b8f42; padding:5%; margin-top:3%; border-radius: 25px">
+
+    <h3 style="text-align: center;">Crear cuenta</h3>
+    <form class="acct_creation" action="{{ url_for('auth.acct_creation') }}" method="POST" enctype="multipart/form-data">
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="text" class="form-control" id="email" name="email" required> 
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Contrase&ntildea:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="mb-3">
+            <label for="password_check" class="form-label">Contrase&ntildea:</label>
+            <input type="password" class="form-control" id="password_check" name="password_check" required>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Razon Social (Nombre completo):</label>
+            <input type="text" id="name" class="form-select" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Telefono:</label>
+            <input type="text" id="phone" class="form-control" name="phone" required> 
+        </div>
+        <div class="col-12" style="margin-top:10px">
+            <button class="btn btn-primary" type="submit">Crear Cuenta</button>
+        </div>
+
+    </form> 
+    
+
+</div>
+
+
+{% endblock %}

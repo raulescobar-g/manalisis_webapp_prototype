@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block head %} <title>Microanalisis</title> {% endblock %}
+
+{% block body %}
+
+    <div class="table-responsive" style="width:90%; margin:auto; border: 7px solid #3b8f42; padding:5%; margin-top:3%; border-radius: 25px">
+        {% if receipts|length > 0 %}
+            <table class="table">
+                <tr style="color:#ffff;background-color: #3b8f42;">
+                    
+                    <th>Imagen</th>
+                    <th>Datos</th>
+                    <th>XML</th>
+                    
+                    <th></th>
+                </tr>
+                {% for receipt in receipts %}
+                    <tr>
+                        <td>
+                            {% if receipt.file_loc is not none %}
+                                <a href="{{ url_for('tabulate.show_img',receipt_id=receipt.receipt_id) }}" target="_blank">Imagen</a>
+                            {% else %}
+                                <p>---</p>
+                            {% endif %}
+                        
+                        </td>
+                        <td>
+                            <p style="font-size:9px ;margin-top:3px; margin-bottom:3px">Usuario: {{ receipt.user.name }}</p>
+                            <p style="font-size:9px ;margin-top:3px; margin-bottom:3px">Orden de Trabajo: {{ receipt.project_id }}</p>
+                            <p style="font-size:9px ;margin-top:3px; margin-bottom:3px">Vendedor: {{ receipt.place }}</p>
+                            <p style="font-size:9px ;margin-top:3px; margin-bottom:3px">Fecha: {{ receipt.time }}</p>
+                            <p style="font-size:9px ;margin-top:3px; margin-bottom:3px">Total Neto: {{ receipt.total }}</p>
+                            <p style="font-size:9px ;margin-top:3px; margin-bottom:3px">IVA: {{ receipt.iva }}</p>
+                            <p style="font-size:9px ;margin-top:3px; margin-bottom:3px">Tipo de Costo: {{ receipt.cost }}</p>
+                            <p style="font-size:9px ;margin-top:3px; margin-bottom:3px">RFC: {{ receipt.rfc }}</p>
+                        </td>
+                        <td>
+                            {% for x in xml %}
+                                {% if x.receipt_id_xml == receipt.receipt_id %}
+                                    <a href=" {{ url_for('tabulate.show_xml', receipt_id = receipt.receipt_id) }}" target="_blank">XML</a>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <a href=" {{ url_for('tabulate.delete_task',receipt_id=receipt.receipt_id) }}">Borrar</a>
+                        </td>
+                    </tr>
+                    
+                {% endfor %}
+            </table> 
+
+
+        {% else %}
+            <p>
+                No hay recibos bajo esta orden de trabajo. Para comprobar sus gastos sigue los
+                pasos siguientes:
+            </p> 
+            <ol>
+                <li> Ve a la pagina "Subir Recibo"</li>
+                <li> Sube una imagen del recibo y los datos asociados con el recibo. </li>
+                <li> Naviga a la pagina "Subir XML"</li>
+                <li> Sube el documento .xml que comprueba los gastos</li>
+                <li> Si todavia no se resuelve, contacta al administrador de tu sucursal</li>
+            </ol>
+        {% endif %}
+    </div>
+    
+
+{% endblock %}

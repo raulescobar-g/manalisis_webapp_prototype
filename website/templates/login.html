@@ -1,0 +1,28 @@
+{% extends 'login_base.html' %}
+
+{% block head %} <title>Microanalisis</title> {% endblock %}
+
+{% block body %}
+
+    <div class ="container" style="width:70%; margin:auto; border: 7px solid #3b8f42; padding:5%; margin-top:3%; border-radius: 25px">
+        <h3 style="text-align: center;">Log-in</h3>
+        <form class="login" action="#" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="email" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput2" class="form-label">Contrase&ntildea</label>
+                <input type="password" class="form-control" id="exampleFormControlInput2" name="password" required>
+            </div>
+            
+            <div class="col-12" style="margin-top:10px">
+                <button class="btn btn-primary" type="submit">Subir</button>
+            </div>
+            <br>
+            <a href="{{ url_for('auth.password') }}" style="font-size:10;">Se me olvido mi constrase&ntildea</a>
+        </form>
+    </div>
+
+{% endblock %}

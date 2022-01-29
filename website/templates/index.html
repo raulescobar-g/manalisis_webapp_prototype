@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block head %} <title>Microanalisis</title> {% endblock %}
+
+{% block body %}
+
+    <div class="inputs" style="margin:3% 10% 3%">
+
+        {% if project_name != '---' %}
+            <h4 style="margin:1% 20% 3%; text-align: center">Orden de trabajo: {{ project_name }}</h4>
+            <form action="{{ url_for('proj.project_change') }}" method="POST" style="width:85%; margin:auto;">
+                <div class="col-12" style="margin-top:1%; text-align: center;">
+                    <button class="btn btn-primary btn-sm" type="submit">Cambiar Orden de Trabajo</button>
+                </div>
+            </form>
+        {% else %}
+            <form action="{{ url_for('proj.project_selection') }}" method="POST" style="width:85%; margin:auto;">
+                <div class="input-group group mb-3">
+                    <input type="text" class="form-control" id="proj_sel" name="project_name" placeholder="Orden de Trabajo" required>
+                    <button class="btn btn-outline-primary btn-sm" type="submit" id="button-addon2">Subir</button>
+                </div>
+            </form>
+        {% endif %}
+        
+        <form class="receipt-input" action="{{ url_for('views.index') }}" method="POST" enctype="multipart/form-data" style="width:90%; margin:auto; border: 7px solid #3b8f42; padding:5%; margin-top:3%; border-radius: 25px">
+            
+            <div class="mb-3">
+                <label class="form-label" for="inputGroupFile01">Imagen del recibo (png/pdf/jpg):</label>
+                <input type="file" class="form-control" id="inputGroupFile01" name="im_input" accept="image/png, image/jpeg, image/pdf, image/jpg">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Vendedor</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="place" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput2" class="form-label">Direccion del Vendedor</label>
+                <input type="text" class="form-control" id="exampleFormControlInput2" name="address">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput3" class="form-label">Telefono del Vendedor</label>
+                <input type="text" class="form-control" id="exampleFormControlInput3" name="phonee">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput4" class="form-label">#RFC</label>
+                <input type="text" class="form-control" id="exampleFormControlInput4" name="rfc">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput5" class="form-label">Fecha del Recibo</label>
+                <input type="date" class="form-control" id="exampleFormControlInput5" name="time" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput6" class="form-label">Total Neto</label>
+                <input type="number" class="form-control" id="exampleFormControlInput6" name="total" step="0.01" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput7" class="form-label">IVA</label>
+                <input type="number" class="form-control" id="exampleFormControlInput7" name="iva" step="0.01" required>
+            </div>
+
+            
+            <select class="form-select" aria-label="Default select example" name="cost" required>
+                <option value="" selected disabled hidden>Tipo de costo</option>
+                <option value="hospedaje">Hospedaje</option>
+                <option value="casetas">Caseta</option>
+                <option value="desayuno">Desayuno</option>
+                <option value="hielo">Hielo</option>
+                <option value="taxi">Taxi</option>
+                <option value="tarjeta_telefonica">Tarjeta Telefonica</option>
+                <option value="lavanderia">Lavanderia</option>
+                <option value="envios">Envios</option>
+                <option value="comida">Comida</option>
+                <option value="cena">Cena</option>
+                <option value="renta_auto">Renta (auto)</option>
+                <option value="avion">Avion</option>
+                <option value="agua_embotellada">Agua Embotellada</option>
+                <option value="autobus">Autobus</option>
+                <option value="combustible">Combustible</option>
+                <option value="otros">Otro</option>
+            </select>
+            <br>
+            
+            <div class="mb-3">
+                <label for="exampleFormControlInput15" class="form-label">Observaciones (opcional)</label>
+                <textarea class="form-control" id="exampleFormControlInput5" rows="10" name='description' placeholder="Campos 'Observaciones' deben ser utilizado en casos de desviaciones del proceso estándar y cuando sea necesario comunicarlo directamente con el equipo administrativo. Observaciones se mandaran al email administracion_vhsa@microanalisis.com."></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="inputGroupFile080">Observaciones (opcional)(png/pdf/jpg):</label>
+                <input type="file" class="form-control" id="inputGroupFile080" name="proof" accept="image/png, image/jpeg, image/pdf, image/jpg">
+                
+                <input type="file" class="form-control" id="inputGroupFile0801" name="proof1" accept="image/png, image/jpeg, image/pdf, image/jpg">
+                
+                <input type="file" class="form-control" id="inputGroupFile0802" name="proof2" accept="image/png, image/jpeg, image/pdf, image/jpg">
+            </div>
+
+            <div class="col-12" style="margin-top:10px">
+                <button class="btn btn-primary" type="submit">Subir</button>
+            </div>
+        </form>
+    </div>
+
+    
+{% endblock %}
+
+
+
+
+
+
+
+
+

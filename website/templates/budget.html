@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block head %} <title>Microanalisis</title> {% endblock %}
+
+{% block body %}
+
+<div class="table-responsive" style="width:90%; margin:auto; border: 7px solid #3b8f42; padding:5%; margin-top:3%; border-radius: 25px"></divclass>
+    <table class="table table-hover" style="font-size: 10px;">
+        <tr style="color:#ffff; background-color: #3b8f42;">
+            <th>Tipo de Costo</th>
+            <th>Presupuesto</th>
+            <th>Gastado</th>
+            <th>Comprobado</th>
+            
+        </tr>
+        
+        <tr>
+            <td> Hospedaje </td>
+            <td>{{ budget.hospedaje[0] }}</td>
+            <td>{{ budget.hospedaje[2] }}</td>
+            <td>{{ budget.hospedaje[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Casetas </td>
+            <td>{{ budget.casetas[0] }}</td>
+            <td>{{ budget.casetas[2] }}</td>
+            <td>{{ budget.casetas[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Desayuno </td>
+            <td>{{ budget.desayuno[0] }}</td>
+            <td>{{ budget.desayuno[2] }}</td>
+            <td>{{ budget.desayuno[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Hielo </td>
+            <td>{{ budget.hielo[0] }}</td>
+            <td>{{ budget.hielo[2] }}</td>
+            <td>{{ budget.hielo[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Taxi </td>
+            <td>{{ budget.taxi[0] }}</td>
+            <td>{{ budget.taxi[2] }}</td>
+            <td>{{ budget.taxi[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Tarjeta Telefonica </td>
+            <td>{{ budget.tarjeta_telefonica[0] }}</td>
+            <td>{{ budget.tarjeta_telefonica[2] }}</td>
+            <td>{{ budget.tarjeta_telefonica[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Lavanderia </td>
+            <td>{{ budget.lavanderia[0] }}</td>
+            <td>{{ budget.lavanderia[2] }}</td>
+            <td>{{ budget.lavanderia[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Envios </td>
+            <td>{{ budget.envios[0] }}</td>
+            <td>{{ budget.envios[2] }}</td>
+            <td>{{ budget.envios[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Comida </td>
+            <td>{{ budget.comida[0] }}</td>
+            <td>{{ budget.comida[2] }}</td>
+            <td>{{ budget.comida[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Cena </td>
+            <td>{{ budget.cena[0] }}</td>
+            <td>{{ budget.cena[2] }}</td>
+            <td>{{ budget.cena[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Renta Auto </td>
+            <td>{{ budget.renta_auto[0] }}</td>
+            <td>{{ budget.renta_auto[2] }}</td>
+            <td>{{ budget.renta_auto[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Avion </td>
+            <td>{{ budget.avion[0] }}</td>
+            <td>{{ budget.avion[2] }}</td>
+            <td>{{ budget.avion[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Agua Embotellada </td>
+            <td>{{ budget.agua_embotellada[0] }}</td>
+            <td>{{ budget.agua_embotellada[2] }}</td>
+            <td>{{ budget.agua_embotellada[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Autobus </td>
+            <td>{{ budget.autobus[0] }}</td>
+            <td>{{ budget.autobus[2] }}</td>
+            <td>{{ budget.autobus[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Combustible </td>
+            <td>{{ budget.combustible[0] }}</td>
+            <td>{{ budget.combustible[2] }}</td>
+            <td>{{ budget.combustible[1] }}</td>
+            
+        </tr>
+        <tr>
+            <td> Otros </td>
+            <td>{{ budget.otros[0] }}</td>
+            <td>{{ budget.otros[2] }}</td>
+            <td>{{ budget.otros[1] }}</td>
+            
+        </tr>
+        
+    </table>
+</div>
+
+{% endblock %}

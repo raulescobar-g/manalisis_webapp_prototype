@@ -1,0 +1,6 @@
+Flask
+python-dotenv
+flask_sqlalchemy
+flask-mail 
+Flask-Login 
+cx-Oracle
