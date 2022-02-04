@@ -6,9 +6,9 @@ pip install pipenv
 pipenv install
 ````
 
-<img src="https://github.com/raulescobar-g/g-manalisis-budget-tool/blob/main/website/static/logi.png?raw=true" width=300/>
-<img src="https://github.com/raulescobar-g/g-manalisis-budget-tool/blob/main/website/static/acct.png?raw=true" width=300 />
-<img src="https://github.com/raulescobar-g/g-manalisis-budget-tool/blob/main/website/static/idx.png?raw=true" width=300 />
+<img src="https://github.com/raulescobar-g/manalisis_webapp_prototype/blob/main/website/static/logi.png?raw=true" width=300/>
+<img src="https://github.com/raulescobar-g/manalisis_webapp_prototype/blob/main/website/static/acct.png?raw=true" width=300 />
+<img src="https://github.com/raulescobar-g/manalisis_webapp_prototype/blob/main/website/static/idx.png?raw=true" width=300 />
 
 
  - ## Routes
